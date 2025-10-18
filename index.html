@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D Pain N Cafe - Your Cozy Coffee Spot</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Arial:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="icon" href="logo.jpg">
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <img src="logo.jpg" alt="D Pain N Cafe Logo" class="logo-img">
+            </div>
+            <div class="nav-links" id="nav-links">
+                <a href="#home">Home</a>
+                <a href="#menu">Menu</a>
+                <a href="#contacts">Contacts</a>
+                <a href="#why-choose-us">Why Choose Us?</a>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="home">
+        <div class="hero-content">
+            <h2 class="fade-in">Welcome to D Pain N Cafe</h2>
+            <p class="fade-in">Indulge in our premium coffees and cozy atmosphere. Freshly brewed just for you.</p>
+            <a href="#menu" class="cta-button fade-in">Explore Menu</a>
+        </div>
+    </section>
+
+    <section id="menu" class="menu">
+        <h2 class="slide-up">Our Menu</h2>
+        <div class="menu-grid">
+            <div class="menu-item slide-up">
+                <img src="strawberry series.jpg" alt="Strawberry Series Menu">
+                <h3>Strawberry Series Menu</h3>
+                <p class="price">Starting at ₱49</p> 
+                <p>Sweet like summer, soft like cream — that's the magic of our Strawberry Series.</p>
+            </div>
+            <div class="menu-item slide-up">
+                <img src="hot coffee.jpg" alt="Hot Coffee Menu">
+                <h3>Hot Coffee Menu</h3>
+                <p class="price">Starting at ₱55</p> 
+                <p>Warm your day with our freshly brewed selection of hot coffees — crafted to comfort, energize, and inspire.</p>
+            </div>
+            <div class="menu-item slide-up">
+                <img src="chicken wings.jpg" alt="Chicken Wings Promo">
+                <h3>Chicken Wings Promo</h3>
+                <p class="price">₱99 for 3 pieces with rice</p> 
+                <p>Get your hands messy and your taste buds happy with our crispy, flavorful chicken wings.</p>
+            </div>
+            <div class="menu-item slide-up">
+                <img src="rice meals.jpg" alt="Rice Meals Menu">
+                <h3>Rice Meals Menu</h3>
+                <p class="price">Starting at ₱65</p> 
+                <p>Hearty meals served with steaming rice — comfort food made just right.</p>
+            </div>
+             <div class="menu-item slide-up">
+                <img src="club house sandwich.jpg" alt="Club House Sandwich">
+                <h3>Club house Sandwich</h3>
+                <p class="price"> ₱130</p> 
+                <p>Crispy, juicy, and layered to perfection — the classic Clubhouse Sandwich you'll crave.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacts" class="contacts">
+        <h2 class="fade-in">Contacts</h2>
+        <p class="fade-in">Visit us at 87 Regalado Ave., Fairview Park, Quezon City | Phone: 0966 078 7518 |</p>
+         <img src="icons8-gmail-48.png" alt="Gmail" class="gmail-icon gmail-link"><a href="dpainncafe@gmail.com" target="_blank" class="gmail-link">dpainncafe@gmail.com</a>
+       <img src="icons8-facebook-48.png" alt="Facebook" class="facebook-icon facebook-link"><a href="https://www.facebook.com/dpainncafe" target="_blank" class="facebook-link"> D Pain N Cafe</a>
+    </section>
+
+    <section id="why-choose-us" class="why-choose-us">
+        <h2 class="fade-in">Why Choose Us?</h2>
+        <ul class="why-list fade-in">
+            <li>Choose us for our passion for quality, warm atmosphere, and coffee crafted to perfection every time.</li>
+            <li>Cozy atmosphere with free Wi-Fi.</li>
+            <li>Expert baristas crafting every drink.</li>
+            <li>Sustainable and eco-friendly practices.</li>
+        </ul>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2022 D Pain N Cafe. All rights reserved.</p>
+    </footer>
+
+    <script>
+      
+        const navLinks = document.querySelectorAll(".nav-links a");
+        navLinks.forEach(link => {
+            link.addEventListener("click", (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute("href");
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                }
+               
+                const navContainer = document.querySelector("#nav-links");
+                if (navContainer) {
+                    navContainer.classList.remove("active");
+                }
+            });
+        });
+
+       
+        const hamburger = document.querySelector(".hamburger");
+        const navLinksContainer = document.querySelector("#nav-links");
+        if (hamburger && navLinksContainer) {
+            hamburger.addEventListener("click", () => {
+                navLinksContainer.classList.toggle("active");
+            });
+        }
+
+       
+        document.addEventListener('DOMContentLoaded', () => {
+           
+            document.querySelectorAll('.fade-in, .slide-up').forEach(el => {
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
+                el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            });
+
+           
+            if ('IntersectionObserver' in window) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                        }
+                    });
+                }, { threshold: 0.1 });
+
+                document.querySelectorAll('.fade-in, .slide-up').forEach(el => {
+                    observer.observe(el);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
